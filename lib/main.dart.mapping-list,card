@@ -1,0 +1,107 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  final List<Map<String, dynamic>> _data = [
+    {
+      "name": "John",
+      "age": 20,
+      "favColors": ["red", "blue", "green"],
+    },
+    {
+      "name": "Rafsan",
+      "age": 17,
+      "favColors": ["red", "blue", "green"],
+    },
+    {
+      "name": "Fauzan",
+      "age": 18,
+      "favColors": [
+        "red",
+        "blue",
+        "green",
+        "red",
+        "blue",
+        "green",
+        "red",
+        "blue",
+        "green",
+        "green",
+        "red",
+        "blue",
+        "green",
+        "red",
+        "blue",
+        "green",
+      ],
+    },
+  ];
+
+  MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Map List"),
+        ),
+        body: ListView(
+          children: _data.map((person) {
+            List favColors = person["favColors"];
+            return Card(
+              margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 3),
+              color: Colors.blueGrey[100],
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              "https://picsum.photos/id/${person["age"] + 10}/200/300"),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Name: ${person["name"]}"),
+                            Text("Umur: ${person["age"]}"),
+                          ],
+                        )
+                      ],
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: favColors.map((color) {
+                          return Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                color: Colors.green[300]),
+                            margin: const EdgeInsets.fromLTRB(10, 10, 1, 1),
+                            width: 50,
+                            height: 20,
+                            child: Text(
+                              color,
+                              textAlign: TextAlign.center,
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
