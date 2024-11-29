@@ -1,0 +1,54 @@
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  final faker = Faker();
+  MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("MyApp"),
+          backgroundColor: Colors.blue,
+        ),
+        body: ListView.builder(
+          itemCount: 100,
+          itemBuilder: (context, index) => ChatItem(
+            title: faker.person.name(),
+            subtitle: faker.lorem.sentence(),
+            imageUrl: "https://picsum.photos/id/${index + 100}/200/300",
+            time: faker.date.justTime(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ChatItem extends StatelessWidget {
+  final String? imageUrl;
+  final String? title;
+  final String? subtitle;
+  final String? time;
+  const ChatItem(
+      {super.key, this.imageUrl, this.title, this.subtitle, this.time});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundImage: NetworkImage("$imageUrl"),
+      ),
+      title: Text("$title"),
+      subtitle: Text(
+        "$subtitle",
+        maxLines: 1,
+      ),
+      trailing: Text("$time"),
+    );
+  }
+}
