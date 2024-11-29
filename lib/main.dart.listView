@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // final List<Color> _myColor = [
+  //   Colors.green,
+  //   Colors.yellow,
+  //   Colors.amber,
+  //   Colors.black,
+  //   Colors.deepOrange,
+  //   Colors.yellow,
+  //   Colors.lightGreen,
+  //   Colors.indigoAccent,
+  //   Colors.yellow,
+  //   Colors.yellow
+  // ];
+  // final List<Widget> _myList = [
+  //   Container(color: Colors.green, height: 200, width: 100,),
+  //   Container(color: Colors.yellow, height: 200, width: 100),
+  //   Container(color: Colors.amber, height: 200, width: 100),
+  //   Container(color: Colors.black, height: 200, width: 100),
+  //   Container(color: Colors.deepOrange, height: 200, width: 100),
+  //   Container(color: Colors.yellow, height: 200, width: 100),
+  //   Container(color: Colors.lightGreen, height: 200, width: 100),
+  //   Container(color: Colors.indigoAccent, height: 200, width: 100),
+  //   Container(color: Colors.yellow, height: 200, width: 100),
+  //   Container(color: Colors.yellow, height: 200, width: 100),
+  //   Container(color: Colors.blueGrey, height: 200, width: 100),
+  // ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Flutter Demo'),
+        ),
+        body: ListView.separated(
+          separatorBuilder: (context, index) => const Divider(),
+          itemCount: 100,
+          itemBuilder: (context, index) => Text("${index + 1}"),
+        ),
+      ),
+    );
+  }
+}
