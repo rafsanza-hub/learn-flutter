@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('ListTile'),
+        ),
+        body: ListView(
+          children: const [
+            ListTile(
+              title: Text('Rafsan'),
+              subtitle: Text('Hallo, Apa Kabar?'),
+              leading: CircleAvatar(),
+              trailing: Text('11:00'),
+            ),
+            Divider(),
+            ListTile(
+              title: Text('Fauzan'),
+              subtitle: Text(
+                'sdjaaaaaaaaaaaaaaaaaaaaaaaaaaajdsjadjsajdddddddddddddhsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              leading: CircleAvatar(),
+              trailing: Text('12:00'),
+              // dense: true,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

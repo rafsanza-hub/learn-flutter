@@ -10,22 +10,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter Demo'),
+          title: const Text("Learn Image Widget"),
         ),
-        body: Stack(
-          children: [
-            Container(
-              color: Colors.amber,
-              height: 200,
-              width: 200,
-            ),
-            Container(
-              color: Colors.blue,
-              height: 100,
-              width: 100,
-            ),
-            Container(color: Colors.red, height: 50, width: 50),
-          ],
+        body: Center(
+          child: Container(
+            color: Colors.deepOrange,
+            width: 412,
+            height: 800,
+            child: Image.network("https://picsum.photos/400/800"),
+          ),
         ),
       ),
     );
