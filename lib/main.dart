@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:second_app/home.dart';
+import 'package:second_app/home_page.dart';
+import 'package:second_app/home_page2.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -9,7 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage1(),
+      home: const HomePage1(),
+      routes: {
+        HomePage1.routeName: (context) => const HomePage1(),
+        HomePage2.routeName: (context) => const HomePage2(),
+      },
     );
   }
 }
