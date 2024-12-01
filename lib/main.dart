@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: HomePage(),
     );
   }
@@ -18,40 +18,27 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double appBarHeight = kToolbarHeight;
-    final double bodyHeight =
-        screenHeight - appBarHeight - MediaQuery.of(context).padding.top;
-
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Media Query"),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Container(
-              height: bodyHeight * 0.5,
-              width: screenWidth,
-              color: Colors.red,
-            ),
-            SizedBox(
-              height: bodyHeight * 0.5,
-              width: double.infinity,
-              child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, indext) {
-                    return const ListTile(
-                      subtitle: Text("Subbbb"),
-                      leading: CircleAvatar(),
-                      title: Text("Item"),
-                    );
-                  }),
-            )
-          ],
+        appBar: AppBar(
+          title: const Text("Home"),
         ),
-      ),
-    );
+        body: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.red,
+                height: 100,
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Container(
+                color: Colors.blue,
+                height: 100,
+              ),
+            ),
+          ],
+        ));
   }
 }
