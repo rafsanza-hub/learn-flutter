@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:second_app/home_stateful.dart';
+import 'package:provider/provider.dart';
+import 'package:second_app/home_provider.dart';
+import 'package:second_app/http_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,8 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeStateful(),
+    return ChangeNotifierProvider(
+      create: (context) => HttpProvider(),
+      child: MaterialApp(
+        home: HomeProvider(),
+      ),
     );
   }
 }
