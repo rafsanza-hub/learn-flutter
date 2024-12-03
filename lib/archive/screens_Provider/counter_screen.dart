@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:second_app/providers/Counter.dart';
+import 'package:second_app/providersArchive1/Counter.dart';
 
 class CounterScreen extends StatefulWidget {
   const CounterScreen({super.key});
