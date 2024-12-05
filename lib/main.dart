@@ -25,19 +25,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Map hasil = {};
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    hasil = {
-      "id": "",
-      "first_name": "",
-      "last_name": "",
-      "email": "",
-      "avatar": "",
-    };
-  }
+  TextEditingController name = TextEditingController();
+  TextEditingController job = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,28 +34,53 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("Home"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Nama depan: ${hasil["first_name"]}"),
-            Text("Nama belakang: ${hasil["last_name"]}"),
-            Text("Email: ${hasil["email"]}"),
-            ElevatedButton(
-              onPressed: () async {
-                var url = Uri.parse("https://reqres.in/api/users/2");
-                var response = await http.get(url);
-                Map data = json.decode(response.body);
-                setState(() {
-                  if (response.statusCode == 200) {
-                    hasil = data["data"];
-                  }
-                });
-              },
-              child: const Text("Ambil data"),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          TextField(
+            controller: name,
+            autocorrect: false,
+            keyboardType: TextInputType.name,
+            decoration: InputDecoration(
+              labelText: "Name",
+              border: OutlineInputBorder(),
             ),
-          ],
-        ),
+          ),
+          SizedBox(height: 10),
+          TextField(
+            controller: job,
+            autocorrect: false,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+              labelText: "Job",
+              border: OutlineInputBorder(),
+            ),
+          ),
+          const SizedBox(height: 10),
+          ElevatedButton(
+            style: ButtonStyle(
+                shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(3),
+                )),
+                foregroundColor: const WidgetStatePropertyAll(Colors.white),
+                backgroundColor: const WidgetStatePropertyAll(Colors.blue)),
+            onPressed: () async {
+              var data = await http
+                  .post(Uri.parse("https://reqres.in/api/users/"), body: {
+                "name": name.text,
+                "job": job.text,
+              });
+              setState(() {
+                hasil = json.decode(data.body);
+              });
+            },
+            child: const Text("Submit"),
+          ),
+          const Divider(),
+          const SizedBox(height: 100),
+          Text("Nama: ${hasil["name"]}"),
+          Text("Job: ${hasil["job"]}"),
+        ],
       ),
     );
   }
