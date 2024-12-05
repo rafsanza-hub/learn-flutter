@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
+        title: const Text("Put & Patch"),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
@@ -41,17 +41,17 @@ class _HomePageState extends State<HomePage> {
             controller: name,
             autocorrect: false,
             keyboardType: TextInputType.name,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: "Name",
               border: OutlineInputBorder(),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TextField(
             controller: job,
             autocorrect: false,
             keyboardType: TextInputType.text,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: "Job",
               border: OutlineInputBorder(),
             ),
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                 backgroundColor: const WidgetStatePropertyAll(Colors.blue)),
             onPressed: () async {
               var data = await http
-                  .post(Uri.parse("https://reqres.in/api/users/"), body: {
+                  .put(Uri.parse("https://reqres.in/api/users/2"), body: {
                 "name": name.text,
                 "job": job.text,
               });
