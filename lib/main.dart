@@ -1,5 +1,6 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: IntroductionPage(),
     );
   }
 }
@@ -74,6 +75,39 @@ class _HomePageState extends State<HomePage> {
         onTap: (index) => setState(() => _bottomNavIndex = index),
         //other params
       ),
+    );
+  }
+}
+
+class IntroductionPage extends StatelessWidget {
+  const IntroductionPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return IntroductionScreen(
+      pages: [
+        PageViewModel(
+          image: Image.network("https://picsum.photos/200/300"),
+          title: "Selamat Datang",
+          body: "Selamat Datang",
+        ),
+        PageViewModel(
+          image: Image.network("https://picsum.photos/200/300"),
+          title: "Selamat Datang",
+          body: "Selamat Datang",
+        ),
+      ],
+      next: const Text("Next"),
+      showNextButton: true,
+      done: const Text("Done"),
+      onDone: () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
+          ),
+        );
+      },
     );
   }
 }
