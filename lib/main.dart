@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,43 +17,33 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  Controller c = Get.put(Controller());
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("GetX"),
+        title: const Text("SnackBar"),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(() => Text(c.count.toString())),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () => c.increment(),
-                  child: const Text("+"),
-                ),
-                ElevatedButton(
-                  onPressed: () => c.decrement(),
-                  child: const Text("-"),
-                ),
-              ],
-            )
-          ],
-        ),
+        child: ElevatedButton(
+            onPressed: () {
+              Get.snackbar(
+                "SnackBar",
+                "SnackBar",
+                snackPosition: SnackPosition.BOTTOM,
+                backgroundColor: Colors.red,
+                colorText: Colors.white,
+                borderRadius: 10,
+                margin: const EdgeInsets.all(10),
+                duration: const Duration(seconds: 3),
+                isDismissible: true,
+                dismissDirection: DismissDirection.horizontal,
+                forwardAnimationCurve: Curves.easeInOut,
+              );
+            },
+            child: const Text("click me")),
       ),
     );
   }
-}
-
-class Controller extends GetxController {
-  var count = 0.obs;
-
-  increment() => count++;
-  decrement() => count--;
 }
