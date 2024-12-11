@@ -1,6 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:lottie/lottie.dart';
 
 void main() => runApp(MyApp());
 
@@ -87,16 +88,23 @@ class IntroductionPage extends StatelessWidget {
     return IntroductionScreen(
       pages: [
         PageViewModel(
-          image: Image.network("https://picsum.photos/200/300"),
+          // image: Image.network("https://picsum.photos/200/300"),
+          image: Center(
+            child: Lottie.asset("assets/lotties/vote2.json",
+                width: double.infinity),
+          ),
+
           title: "Selamat Datang",
           body: "Selamat Datang",
         ),
         PageViewModel(
-          image: Image.network("https://picsum.photos/200/300"),
+          // image: Image.network("https://picsum.photos/200/300"),
+          image: Lottie.asset("assets/lotties/vote.json"),
           title: "Selamat Datang",
           body: "Selamat Datang",
         ),
       ],
+      bodyPadding: const EdgeInsets.only(top: 50),
       next: const Text("Next"),
       showNextButton: true,
       done: const Text("Done"),
