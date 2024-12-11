@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -23,26 +21,24 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("SnackBar"),
+        title: const Text("Dialog"),
       ),
       body: Center(
         child: ElevatedButton(
-            onPressed: () {
-              Get.snackbar(
-                "SnackBar",
-                "SnackBar",
-                snackPosition: SnackPosition.BOTTOM,
-                backgroundColor: Colors.red,
-                colorText: Colors.white,
-                borderRadius: 10,
-                margin: const EdgeInsets.all(10),
-                duration: const Duration(seconds: 3),
-                isDismissible: true,
-                dismissDirection: DismissDirection.horizontal,
-                forwardAnimationCurve: Curves.easeInOut,
-              );
-            },
-            child: const Text("click me")),
+          onPressed: () {
+            Get.defaultDialog(
+              title: "Dialog",
+              middleText: "Dialog",
+              textConfirm: "Confirm",
+              textCancel: "Cancel",
+              confirmTextColor: Colors.black,
+              cancelTextColor: Colors.black,
+              onConfirm: () {},
+              onCancel: () {},
+            );
+          },
+          child: const Text("click me"),
+        ),
       ),
     );
   }
