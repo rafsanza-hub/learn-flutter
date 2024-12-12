@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:second_app/pages/home.dart';
+import 'package:second_app/pages/page_1.dart';
 import 'package:second_app/pages/page_2.dart';
+import 'package:second_app/pages/page_3.dart';
+import 'package:second_app/pages/page_4.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,8 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      getPages: [GetPage(name: '/page_2', page: () => PageDua())],
-      home: HomePage(),
+      home: const HomePage(),
+      getPages: [
+        GetPage(name: '/', page: () => const HomePage()),
+        GetPage(name: '/page_1', page: () => const PageSatu()),
+        GetPage(name: '/page_2', page: () => const PageDua()),
+        GetPage(name: '/page_3', page: () => const PageTiga()),
+        GetPage(name: '/page_4', page: () => const PageEmpat()),
+      ],
     );
   }
 }

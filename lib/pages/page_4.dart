@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:second_app/pages/page_3.dart';
+  
 
 class PageEmpat extends StatelessWidget {
   const PageEmpat({super.key});

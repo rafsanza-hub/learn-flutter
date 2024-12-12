@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:second_app/pages/page_1.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,7 +13,8 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Get.to(PageSatu());
+            // Get.to(PageSatu());
+            Get.toNamed("/page_1");
           },
           child: const Text("Page 1 >>"),
         ),

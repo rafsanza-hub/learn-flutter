@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:second_app/pages/page_2.dart';
 
 class PageSatu extends StatelessWidget {
   const PageSatu({super.key});
@@ -14,7 +13,8 @@ class PageSatu extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Get.to(PageDua());
+            // Get.to(PageDua());
+            Get.toNamed("/page_2");
           },
           child: const Text("Page 2 >>"),
         ),
