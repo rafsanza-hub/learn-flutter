@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:second_app/pages/home.dart';
+import 'package:second_app/pages/page_2.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -9,37 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      getPages: [GetPage(name: '/page_2', page: () => PageDua())],
       home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Dialog"),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Get.defaultDialog(
-              title: "Dialog",
-              middleText: "Dialog",
-              textConfirm: "Confirm",
-              textCancel: "Cancel",
-              confirmTextColor: Colors.black,
-              cancelTextColor: Colors.black,
-              onConfirm: () {},
-              onCancel: () {},
-            );
-          },
-          child: const Text("click me"),
-        ),
-      ),
     );
   }
 }
