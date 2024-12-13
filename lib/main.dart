@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:second_app/pages/home.dart';
-import 'package:second_app/pages/page_1.dart';
-import 'package:second_app/pages/page_2.dart';
-import 'package:second_app/pages/page_3.dart';
-import 'package:second_app/pages/page_4.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,15 +9,43 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      home: const HomePage(),
-      getPages: [
-        GetPage(name: '/', page: () => const HomePage()),
-        GetPage(name: '/page_1', page: () => const PageSatu()),
-        GetPage(name: '/page_2', page: () => const PageDua()),
-        GetPage(name: '/page_3', page: () => const PageTiga()),
-        GetPage(name: '/page_4', page: () => const PageEmpat()),
-      ],
+    return MaterialApp(
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("PageView"),
+      ),
+      body: Center(
+        child: PageView(children: [
+          Container(
+            color: Colors.red,
+            child: const Center(
+              child: Text("Page 1"),
+            ),
+          ),
+          Container(
+            color: Colors.green,
+            child: const Center(
+              child: Text("Page 2"),
+            ),
+          ),
+          Container(
+            color: Colors.blue,
+            child: const Center(
+              child: Text("Page 3"),
+            ),
+          )
+        ]),
+      ),
     );
   }
 }
