@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       home: HomePage(),
     );
   }
@@ -20,32 +21,42 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Controller c = Get.put(Controller());
     return Scaffold(
       appBar: AppBar(
-        title: Text("PageView"),
+        title: const Text("State"),
       ),
       body: Center(
-        child: PageView(children: [
-          Container(
-            color: Colors.red,
-            child: const Center(
-              child: Text("Page 1"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Obx(
+              () => Text(
+                "${c.count}",
+                style: const TextStyle(fontSize: 25),
+              ),
             ),
-          ),
-          Container(
-            color: Colors.green,
-            child: const Center(
-              child: Text("Page 2"),
+            const SizedBox(height: 15),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    onPressed: () => c.decrement(), child: const Text("-")),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                    onPressed: () => c.increment(), child: const Text("+")),
+              ],
             ),
-          ),
-          Container(
-            color: Colors.blue,
-            child: const Center(
-              child: Text("Page 3"),
-            ),
-          )
-        ]),
+          ],
+        ),
       ),
     );
   }
+}
+
+class Controller extends GetxController {
+  RxInt count = 0.obs;
+
+  increment() => count++;
+  decrement() => count--;
 }
